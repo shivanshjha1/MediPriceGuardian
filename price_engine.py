@@ -1,8 +1,14 @@
 
+# ==========================================
+# MEDIPRICE GUARDIAN
+# PRICE ENGINE
+# ==========================================
+
+
 class PriceEngine:
 
-    # Price-gouging threshold: 150% of market price
-    PRICE_THRESHOLD = 1.5
+    # Price-gouging threshold: 20% above market price
+    PRICE_THRESHOLD = 1.20
 
     # -----------------------------------------
     # CALCULATE PROCEDURE COST
@@ -64,7 +70,8 @@ class PriceEngine:
                 market_price * self.PRICE_THRESHOLD
             )
 
-            # Alert only when price is strictly above 150%
+            # Alert only when the hospital price is
+            # more than 20% above market price
             if hospital_price > threshold_price:
 
                 alerts.append({
@@ -95,15 +102,24 @@ class PriceEngine:
         print("Hospital:", estimate["hospital"])
         print("Procedure:", estimate["procedure"])
 
-        print("\nSurgeon Fee: Rs.", estimate["surgeon_fee"])
+        print(
+            "\nSurgeon Fee: Rs.",
+            estimate["surgeon_fee"]
+        )
 
         print("\nConsumable Price Details:")
 
         for item in estimate["items"]:
 
             print("\nItem:", item["name"])
-            print("Market Price: Rs.", item["market_price"])
-            print("Hospital Price: Rs.", item["hospital_price"])
+            print(
+                "Market Price: Rs.",
+                item["market_price"]
+            )
+            print(
+                "Hospital Price: Rs.",
+                item["hospital_price"]
+            )
 
         if estimate["missing_items"]:
 
@@ -112,7 +128,10 @@ class PriceEngine:
             for item_name in estimate["missing_items"]:
                 print("-", item_name)
 
-        print("\nEstimated Total: Rs.", estimate["total_cost"])
+        print(
+            "\nEstimated Total: Rs.",
+            estimate["total_cost"]
+        )
 
         print("\nPrice Gouging Alerts:")
 
@@ -121,15 +140,34 @@ class PriceEngine:
             for alert in alerts:
 
                 print("\nALERT:", alert["item"])
-                print("Market Price: Rs.", alert["market_price"])
-                print("150% Threshold: Rs.", alert["threshold_price"])
-                print("Hospital Price: Rs.", alert["hospital_price"])
-                print("Status: PRICE GOUGING DETECTED")
+
+                print(
+                    "Market Price: Rs.",
+                    alert["market_price"]
+                )
+
+                print(
+                    "20% Above Market Threshold: Rs.",
+                    alert["threshold_price"]
+                )
+
+                print(
+                    "Hospital Price: Rs.",
+                    alert["hospital_price"]
+                )
+
+                print(
+                    "Status: POTENTIALLY EXCESSIVE PRICE"
+                )
 
         else:
-            print("No price gouging detected.")
+            print(
+                "No prices exceeded the "
+                "20% above-market threshold."
+            )
 
         print("\n==================================")
+
 
     # -----------------------------------------
     # GENERATE OVERALL PRICE GOUGING REPORT
@@ -137,7 +175,9 @@ class PriceEngine:
 
     def generate_gouging_report(self, hospitals, procedures):
 
-        print("\n========== OVERALL PRICE GOUGING REPORT ==========")
+        print(
+            "\n========== OVERALL PRICE GOUGING REPORT =========="
+        )
 
         total_alerts = 0
 
@@ -148,28 +188,65 @@ class PriceEngine:
             for procedure in procedures:
 
                 alerts = self.check_price_gouging(
-                    hospital, procedure
+                    hospital,
+                    procedure
                 )
 
                 if alerts:
 
-                    print("\nProcedure:", procedure.name)
+                    print(
+                        "\nProcedure:",
+                        procedure.name
+                    )
 
                     for alert in alerts:
 
                         total_alerts += 1
 
-                        print("\n  ALERT:", alert["item"])
-                        print("  Market Price: Rs.", alert["market_price"])
-                        print("  150% Threshold: Rs.", alert["threshold_price"])
-                        print("  Hospital Price: Rs.", alert["hospital_price"])
-                        print("  Status: PRICE GOUGING DETECTED")
+                        print(
+                            "\n  ALERT:",
+                            alert["item"]
+                        )
+
+                        print(
+                            "  Market Price: Rs.",
+                            alert["market_price"]
+                        )
+
+                        print(
+                            "  20% Above Market Threshold: Rs.",
+                            alert["threshold_price"]
+                        )
+
+                        print(
+                            "  Hospital Price: Rs.",
+                            alert["hospital_price"]
+                        )
+
+                        print(
+                            "  Status: POTENTIALLY EXCESSIVE PRICE"
+                        )
 
         if total_alerts == 0:
-            print("\nNo price gouging detected.")
 
-        print("\nTotal Price Gouging Alerts:", total_alerts)
-        print("Threshold: Strictly greater than 150%")
-        print("==================================================")
+            print(
+                "\nNo prices exceeded the "
+                "20% above-market threshold."
+            )
+
+        print(
+            "\nTotal Price Gouging Alerts:",
+            total_alerts
+        )
+
+        print(
+            "Threshold: Strictly greater than "
+            "120% of market price "
+            "(more than 20% above market)"
+        )
+
+        print(
+            "=================================================="
+        )
 
         return total_alerts
