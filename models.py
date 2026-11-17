@@ -41,18 +41,36 @@ class Hospital:
 
 
 
+
 class GovernmentScheme:
-    def __init__(self, code, name, description, benefits, eligibility):
+    def __init__(
+        self,
+        code,
+        name,
+        description,
+        benefits,
+        eligibility,
+        coverage_amount=None,
+        category="Healthcare Programme",
+        official_url=""
+    ):
         self.code = code
         self.name = name
         self.description = description
         self.benefits = benefits
         self.eligibility = eligibility
+        self.coverage_amount = coverage_amount
+        self.category = category
+        self.official_url = official_url
 
     def display_details(self):
         print("Scheme Code:", self.code)
         print("Scheme Name:", self.name)
+        print("Category:", self.category)
         print("Description:", self.description)
         print("Benefits:", self.benefits)
         print("Eligibility:", self.eligibility)
+        print("Coverage Amount:", self.coverage_amount)
+        print("Official Website:", self.official_url)
+
 

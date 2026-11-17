@@ -1,351 +1,246 @@
-
 {
-    "data_notice": "DEMONSTRATION DATA ONLY. Hospital prices, hospital scheme mappings and eligibility must be verified before real-world use.",
-
-    "consumables": [
-        {
-            "name": "Scalpel",
-            "market_price": 350
-        },
-        {
-            "name": "Catheter",
-            "market_price": 350
-        },
-        {
-            "name": "Bandage Roll",
-            "market_price": 100
-        },
-        {
-            "name": "Surgical Gloves",
-            "market_price": 50
-        },
-        {
-            "name": "Suture",
-            "market_price": 200
-        },
-        {
-            "name": "Syringe",
-            "market_price": 20
-        }
-    ],
-
-    "procedures": [
-        {
-            "code": "COLON-002",
-            "name": "Colonoscopy",
-            "surgeon_fee": 12000,
-            "consumables": [
-                "Catheter",
-                "Surgical Gloves",
-                "Syringe"
-            ]
-        },
-        {
-            "code": "EYE-001",
-            "name": "Cataract Surgery",
-            "surgeon_fee": 15000,
-            "consumables": [
-                "Surgical Gloves",
-                "Suture",
-                "Syringe"
-            ]
-        },
-        {
-            "code": "SURG-003",
-            "name": "Appendectomy",
-            "surgeon_fee": 20000,
-            "consumables": [
-                "Scalpel",
-                "Suture",
-                "Bandage Roll",
-                "Surgical Gloves"
-            ]
-        }
-    ],
-
-    "hospitals": [
-        {
-            "name": "City Medical Center",
-            "city": "Delhi",
-            "pricing": {
-                "Scalpel": 1200,
-                "Catheter": 2500,
-                "Bandage Roll": 450,
-                "Surgical Gloves": 150,
-                "Suture": 650,
-                "Syringe": 80
-            },
-            "accepted_schemes": ["PMJAY"]
-        },
-        {
-            "name": "Sunrise Hospital",
-            "city": "Delhi",
-            "pricing": {
-                "Scalpel": 400,
-                "Catheter": 500,
-                "Bandage Roll": 120,
-                "Surgical Gloves": 60,
-                "Suture": 250,
-                "Syringe": 25
-            },
-            "accepted_schemes": ["PMJAY", "CGHS"]
-        },
-        {
-            "name": "Metro Care Hospital",
-            "city": "Jaipur",
-            "pricing": {
-                "Scalpel": 700,
-                "Catheter": 800,
-                "Bandage Roll": 180,
-                "Surgical Gloves": 100,
-                "Suture": 300,
-                "Syringe": 40
-            },
-            "accepted_schemes": ["CGHS"]
-        },
-        {
-            "name": "Green Life Hospital",
-            "city": "Jaipur",
-            "pricing": {
-                "Scalpel": 500,
-                "Catheter": 600,
-                "Bandage Roll": 150,
-                "Surgical Gloves": 70,
-                "Suture": 220,
-                "Syringe": 30
-            },
-            "accepted_schemes": ["PMJAY"]
-        },
-        {
-            "name": "National Care Hospital",
-            "city": "Mumbai",
-            "pricing": {
-                "Scalpel": 900,
-                "Catheter": 950,
-                "Bandage Roll": 250,
-                "Surgical Gloves": 120,
-                "Suture": 400,
-                "Syringe": 50
-            },
-            "accepted_schemes": ["CGHS"]
-        },
-        {
-            "name": "Sunshine Medical Center",
-            "city": "Mumbai",
-            "pricing": {
-                "Scalpel": 450,
-                "Catheter": 550,
-                "Bandage Roll": 130,
-                "Surgical Gloves": 65,
-                "Suture": 230,
-                "Syringe": 25
-            },
-            "accepted_schemes": ["PMJAY", "CGHS"]
-        },
-        {
-            "name": "Community Health Hospital",
-            "city": "Lucknow",
-            "pricing": {
-                "Scalpel": 380,
-                "Catheter": 420,
-                "Bandage Roll": 110,
-                "Surgical Gloves": 55,
-                "Suture": 210,
-                "Syringe": 22
-            },
-            "accepted_schemes": ["PMJAY"]
-        },
-        {
-            "name": "Apollo Demo Hospital",
-            "city": "Delhi",
-            "pricing": {
-                "Scalpel": 1000,
-                "Catheter": 1100,
-                "Bandage Roll": 300,
-                "Surgical Gloves": 130,
-                "Suture": 500,
-                "Syringe": 60
-            },
-            "accepted_schemes": []
-        }
-    ],
-
-    "schemes": [
-        {
-            "code": "PMJAY",
-            "name": "Ayushman Bharat PM-JAY",
-            "coverage_amount": 500000,
-            "description": "Government health assurance scheme. Demonstration record; verify current benefits.",
-            "eligibility": "Verify beneficiary eligibility through official channels."
-        },
-        {
-            "code": "CGHS",
-            "name": "Central Government Health Scheme",
-            "coverage_amount": null,
-            "description": "Healthcare scheme for eligible central government beneficiaries.",
-            "eligibility": "Verify current CGHS eligibility and rules."
-        },
-        {
-            "code": "NTEP",
-            "name": "National Tuberculosis Elimination Programme",
-            "coverage_amount": null,
-            "description": "National tuberculosis programme; not a general hospital cashless scheme.",
-            "eligibility": "Refer to official NTEP programme guidelines."
-        },
-        {
-            "code": "ABDM",
-            "name": "Ayushman Bharat Digital Mission",
-            "coverage_amount": null,
-            "description": "Digital health infrastructure mission; not a general insurance coverage scheme.",
-            "eligibility": "Refer to official ABDM guidelines."
-        },
-        {
-            "code": "PENDING-01",
-            "name": "Scheme Entry 01 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-02",
-            "name": "Scheme Entry 02 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-03",
-            "name": "Scheme Entry 03 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-04",
-            "name": "Scheme Entry 04 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-05",
-            "name": "Scheme Entry 05 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-06",
-            "name": "Scheme Entry 06 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-07",
-            "name": "Scheme Entry 07 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-08",
-            "name": "Scheme Entry 08 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-09",
-            "name": "Scheme Entry 09 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-10",
-            "name": "Scheme Entry 10 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-11",
-            "name": "Scheme Entry 11 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-12",
-            "name": "Scheme Entry 12 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-13",
-            "name": "Scheme Entry 13 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-14",
-            "name": "Scheme Entry 14 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-15",
-            "name": "Scheme Entry 15 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-16",
-            "name": "Scheme Entry 16 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-17",
-            "name": "Scheme Entry 17 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-18",
-            "name": "Scheme Entry 18 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-19",
-            "name": "Scheme Entry 19 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-20",
-            "name": "Scheme Entry 20 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        },
-        {
-            "code": "PENDING-21",
-            "name": "Scheme Entry 21 - To Be Verified",
-            "coverage_amount": null,
-            "description": "Placeholder; replace with a verified government scheme.",
-            "eligibility": "Not verified."
-        }
-    ]
+  "data_notice": "DEMONSTRATION DATA ONLY. Hospital prices, hospital scheme mappings and eligibility must be verified before real-world use.",
+  "consumables": [
+    {
+      "name": "Scalpel",
+      "market_price": 350
+    },
+    {
+      "name": "Catheter",
+      "market_price": 350
+    },
+    {
+      "name": "Bandage Roll",
+      "market_price": 100
+    },
+    {
+      "name": "Surgical Gloves",
+      "market_price": 50
+    },
+    {
+      "name": "Suture",
+      "market_price": 200
+    },
+    {
+      "name": "Syringe",
+      "market_price": 20
+    }
+  ],
+  "procedures": [
+    {
+      "code": "COLON-002",
+      "name": "Colonoscopy",
+      "surgeon_fee": 12000,
+      "consumables": [
+        "Catheter",
+        "Surgical Gloves",
+        "Syringe"
+      ]
+    },
+    {
+      "code": "EYE-001",
+      "name": "Cataract Surgery",
+      "surgeon_fee": 15000,
+      "consumables": [
+        "Surgical Gloves",
+        "Suture",
+        "Syringe"
+      ]
+    },
+    {
+      "code": "SURG-003",
+      "name": "Appendectomy",
+      "surgeon_fee": 20000,
+      "consumables": [
+        "Scalpel",
+        "Suture",
+        "Bandage Roll",
+        "Surgical Gloves"
+      ]
+    }
+  ],
+  "hospitals": [
+    {
+      "name": "City Medical Center",
+      "city": "Delhi",
+      "pricing": {
+        "Scalpel": 1200,
+        "Catheter": 2500,
+        "Bandage Roll": 450,
+        "Surgical Gloves": 150,
+        "Suture": 650,
+        "Syringe": 80
+      },
+      "accepted_schemes": [
+        "PMJAY"
+      ]
+    },
+    {
+      "name": "Sunrise Hospital",
+      "city": "Delhi",
+      "pricing": {
+        "Scalpel": 400,
+        "Catheter": 500,
+        "Bandage Roll": 120,
+        "Surgical Gloves": 60,
+        "Suture": 250,
+        "Syringe": 25
+      },
+      "accepted_schemes": [
+        "PMJAY",
+        "CGHS"
+      ]
+    },
+    {
+      "name": "Metro Care Hospital",
+      "city": "Jaipur",
+      "pricing": {
+        "Scalpel": 700,
+        "Catheter": 800,
+        "Bandage Roll": 180,
+        "Surgical Gloves": 100,
+        "Suture": 300,
+        "Syringe": 40
+      },
+      "accepted_schemes": [
+        "CGHS"
+      ]
+    },
+    {
+      "name": "Green Life Hospital",
+      "city": "Jaipur",
+      "pricing": {
+        "Scalpel": 500,
+        "Catheter": 600,
+        "Bandage Roll": 150,
+        "Surgical Gloves": 70,
+        "Suture": 220,
+        "Syringe": 30
+      },
+      "accepted_schemes": [
+        "PMJAY"
+      ]
+    },
+    {
+      "name": "National Care Hospital",
+      "city": "Mumbai",
+      "pricing": {
+        "Scalpel": 900,
+        "Catheter": 950,
+        "Bandage Roll": 250,
+        "Surgical Gloves": 120,
+        "Suture": 400,
+        "Syringe": 50
+      },
+      "accepted_schemes": [
+        "CGHS"
+      ]
+    },
+    {
+      "name": "Sunshine Medical Center",
+      "city": "Mumbai",
+      "pricing": {
+        "Scalpel": 450,
+        "Catheter": 550,
+        "Bandage Roll": 130,
+        "Surgical Gloves": 65,
+        "Suture": 230,
+        "Syringe": 25
+      },
+      "accepted_schemes": [
+        "PMJAY",
+        "CGHS"
+      ]
+    },
+    {
+      "name": "Community Health Hospital",
+      "city": "Lucknow",
+      "pricing": {
+        "Scalpel": 380,
+        "Catheter": 420,
+        "Bandage Roll": 110,
+        "Surgical Gloves": 55,
+        "Suture": 210,
+        "Syringe": 22
+      },
+      "accepted_schemes": [
+        "PMJAY"
+      ]
+    },
+    {
+      "name": "Apollo Demo Hospital",
+      "city": "Delhi",
+      "pricing": {
+        "Scalpel": 1000,
+        "Catheter": 1100,
+        "Bandage Roll": 300,
+        "Surgical Gloves": 130,
+        "Suture": 500,
+        "Syringe": 60
+      },
+      "accepted_schemes": []
+    }
+  ],
+  "schemes": [
+    {
+      "code": "PMJAY",
+      "name": "Ayushman Bharat PM-JAY",
+      "coverage_amount": 500000,
+      "description": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana is a government-funded health assurance scheme for eligible beneficiaries.",
+      "eligibility": "Eligible families identified under PM-JAY and applicable state criteria; Indian citizens aged 70 years or above may qualify under the senior citizen expansion. Verify through the official beneficiary portal.",
+      "benefits": "Cashless secondary and tertiary hospitalization at empanelled hospitals, with annual coverage of up to Rs. 5 lakh per eligible family.",
+      "category": "Health Assurance",
+      "official_url": "https://nha.gov.in/"
+    },
+    {
+      "code": "CGHS",
+      "name": "Central Government Health Scheme",
+      "coverage_amount": null,
+      "description": "Central Government Health Scheme provides healthcare services to eligible central government beneficiaries.",
+      "eligibility": "Eligible serving or retired central government employees, dependants and other notified beneficiary categories.",
+      "benefits": "Outpatient care, medicines, investigations, specialist consultations and treatment through CGHS facilities and empanelled healthcare providers, subject to scheme rules.",
+      "category": "Government Employee Healthcare",
+      "official_url": "https://www.mohfw.gov.in/"
+    },
+    {
+      "code": "NTEP",
+      "name": "National Tuberculosis Elimination Programme",
+      "coverage_amount": null,
+      "description": "National Tuberculosis Elimination Programme is a public health programme for tuberculosis prevention, diagnosis and treatment.",
+      "eligibility": "People requiring TB evaluation or treatment in India, subject to applicable programme services and guidelines.",
+      "benefits": "Free TB diagnostic and treatment services through the public health system, along with applicable patient support.",
+      "category": "Public Health Programme",
+      "official_url": "https://tbcindia.mohfw.gov.in/"
+    },
+    {
+      "code": "ABDM",
+      "name": "Ayushman Bharat Digital Mission",
+      "coverage_amount": null,
+      "description": "Ayushman Bharat Digital Mission develops India's digital health ecosystem and enables interoperable health information systems.",
+      "eligibility": "Individuals can participate in available ABDM digital health services, subject to registration and applicable requirements.",
+      "benefits": "Digital health identity through ABHA and consent-based access to and sharing of digital health records through participating systems. It does not itself provide hospital insurance coverage.",
+      "category": "Digital Health Initiative",
+      "official_url": "https://abdm.gov.in/"
+    },
+    {
+      "code": "ESI",
+      "name": "Employees' State Insurance Scheme",
+      "coverage_amount": null,
+      "description": "A statutory social security scheme administered by the Employees' State Insurance Corporation.",
+      "benefits": "Medical care and other applicable social security benefits for insured persons and eligible dependants.",
+      "eligibility": "Employees covered under the ESI Act and eligible family members, subject to applicable contribution and coverage rules.",
+      "category": "Employee Healthcare and Social Security",
+      "official_url": "https://esic.gov.in/"
+    },
+    {
+      "code": "RGHS",
+      "name": "Rajasthan Government Health Scheme",
+      "coverage_amount": null,
+      "description": "A healthcare scheme for specified categories of Rajasthan government beneficiaries.",
+      "benefits": "Cashless healthcare services for eligible beneficiaries, subject to scheme rules and empanelment.",
+      "eligibility": "Eligible Rajasthan government employees, pensioners and other notified beneficiary categories, subject to current RGHS rules.",
+      "category": "State Government Healthcare Scheme",
+      "official_url": "https://rghs.rajasthan.gov.in/"
+    }
+  ]
 }
-

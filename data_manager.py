@@ -122,23 +122,28 @@ class DataManager:
     # 5. LOAD GOVERNMENT SCHEMES
     # --------------------------------------
 
+    
     def load_schemes(self, records):
-
         schemes = []
 
         for record in records:
-
             scheme = GovernmentScheme(
-                record["code"],
-                record["name"],
-                record["coverage_amount"],
-                record["description"],
-                record["eligibility"]
+                code=record["code"],
+                name=record["name"],
+                description=record.get("description", ""),
+                benefits=record.get("benefits", ""),
+                eligibility=record.get("eligibility", ""),
+                coverage_amount=record.get("coverage_amount"),
+                category=record.get(
+                    "category", "Healthcare Programme"
+                ),
+                official_url=record.get("official_url", "")
             )
 
             schemes.append(scheme)
 
         return schemes
+
 
     # --------------------------------------
     # 6. LOAD COMPLETE DATABASE
@@ -229,16 +234,21 @@ class DataManager:
                 for item in data["hospitals"]
             ],
 
+            
             "schemes": [
                 {
                     "code": item.code,
                     "name": item.name,
                     "coverage_amount": item.coverage_amount,
                     "description": item.description,
-                    "eligibility": item.eligibility
+                    "benefits": item.benefits,
+                    "eligibility": item.eligibility,
+                    "category": item.category,
+                    "official_url": item.official_url
                 }
                 for item in data["schemes"]
             ]
+
         }
 
         with self.file_path.open("w", encoding="utf-8") as file:

@@ -165,8 +165,8 @@ elif page == "Hospital Directory":
     st.title("🏥 Hospital Directory")
 
     st.write(
-        "Explore hospitals and their accepted "
-        "government schemes."
+        "Explore demonstration hospitals and their listed "
+        "scheme associations (not verified participation)."
     )
 
     hospital_rows = []
@@ -175,7 +175,7 @@ elif page == "Hospital Directory":
 
         hospital_rows.append({
             "Hospital Name": hospital.name,
-            "Accepted Schemes": (
+            "Demo Scheme Associations": (
                 ", ".join(hospital.accepted_schemes)
                 if hospital.accepted_schemes
                 else "None listed"
@@ -213,7 +213,7 @@ elif page == "Hospital Directory":
     )
 
     st.write(
-        "**Accepted Schemes:**",
+        "**Demo Scheme Associations:**",
         (
             ", ".join(selected_hospital.accepted_schemes)
             if selected_hospital.accepted_schemes
@@ -456,9 +456,9 @@ elif page == "Government Scheme Finder":
     st.title("🏛️ Government Healthcare Scheme Finder")
 
     st.write(
-        "Explore government healthcare programmes, "
-        "their benefits, eligibility information, "
-        "and hospitals listing the selected scheme."
+        "Explore government healthcare programmes and initiatives, "
+        "their benefits, eligibility information, official sources, "
+        "and demonstration hospital associations."
     )
 
     st.divider()
@@ -483,30 +483,40 @@ elif page == "Government Scheme Finder":
 
     st.subheader("Scheme Information")
 
-    st.write(
-        "**Scheme Name:**",
-        selected_scheme.name
-    )
+    st.write("**Scheme Name:**", selected_scheme.name)
+    st.write("**Scheme Code:**", selected_scheme.code)
+    st.write("**Category:**", selected_scheme.category)
+    st.write("**Description:**", selected_scheme.description)
 
-    st.write(
-        "**Scheme Code:**",
-        selected_scheme.code
-    )
+    if selected_scheme.benefits:
+        st.write("**Benefits:**", selected_scheme.benefits)
+    else:
+        st.info(
+            "Detailed benefits have not yet been added. "
+            "Please verify current benefits through official sources."
+        )
 
-    st.write(
-        "**Description:**",
-        selected_scheme.description
-    )
+    st.write("**Eligibility:**", selected_scheme.eligibility)
 
-    st.write(
-        "**Benefits:**",
-        selected_scheme.benefits
-    )
+    if selected_scheme.coverage_amount is not None:
+        st.write(
+            "**Listed Coverage Amount:**",
+            f"₹{selected_scheme.coverage_amount:,.0f}"
+        )
+        st.caption(
+            "Coverage amounts may be subject to scheme conditions "
+            "and are not a guarantee of individual eligibility."
+        )
 
-    st.write(
-        "**Eligibility:**",
-        selected_scheme.eligibility
-    )
+    if selected_scheme.official_url:
+        st.link_button(
+            "🌐 Visit Official Government Website",
+            selected_scheme.official_url
+        )
+    else:
+        st.warning(
+            "An official source link has not yet been added for this programme."
+        )
 
     st.divider()
 
@@ -514,7 +524,11 @@ elif page == "Government Scheme Finder":
     # MATCHING HOSPITALS
     # ==================================
 
-    st.subheader("Hospitals Listing This Scheme")
+    st.subheader("Demo Hospital Associations")
+    st.caption(
+        "These are demonstration records, not a verified list "
+        "of empanelled or participating hospitals."
+    )
 
     matching_hospitals = []
 
@@ -535,9 +549,10 @@ elif page == "Government Scheme Finder":
             hide_index=True
         )
 
-        st.success(
-            f"{len(matching_hospitals)} hospital(s) "
-            "list this scheme as accepted."
+        st.warning(
+            f"{len(matching_hospitals)} hospital(s) are associated with "
+            "this programme in the demonstration dataset. "
+            "Actual participation has not been verified."
         )
 
     else:
@@ -550,9 +565,9 @@ elif page == "Government Scheme Finder":
     st.divider()
 
     st.caption(
-        "Scheme details and hospital acceptance are "
-        "demonstration information. Verify current "
-        "benefits, eligibility and hospital participation "
+        "Scheme summaries are informational and may change. "
+        "Hospital associations are fictional demonstration data. "
+        "Verify eligibility, benefits and actual hospital participation "
         "through official government sources."
     )
 
