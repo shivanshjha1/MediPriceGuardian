@@ -72,5 +72,3 @@ class GovernmentScheme:
         print("Eligibility:", self.eligibility)
         print("Coverage Amount:", self.coverage_amount)
         print("Official Website:", self.official_url)
-
-
